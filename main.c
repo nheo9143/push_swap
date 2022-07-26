@@ -6,7 +6,7 @@
 /*   By: nheo <nheo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 19:00:17 by nheo              #+#    #+#             */
-/*   Updated: 2022/07/21 16:41:32 by nheo             ###   ########.fr       */
+/*   Updated: 2022/07/26 21:16:09 by nheo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ int	main(int ac, char *av[])
 	if (ac == 1)
 		return (0);
 	get_data(ac, &av[1], &data);
-	// if (data.stack_a->size > 5)
-	// 	greedy_algorithm(&data);
-	// else
-	// 	a_star_algorithm(&data);
-	print_result(data);
-	system(("leaks push_swap"));
+	if (data.stack_a->size > 3)
+		greedy_algorithm(&data);
+	else
+		sort_small(&data);
+	// print_result(data);
+	// system(("leaks push_swap"));
 	exit(0);
 }

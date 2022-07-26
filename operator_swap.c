@@ -6,7 +6,7 @@
 /*   By: nheo <nheo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 18:59:35 by nheo              #+#    #+#             */
-/*   Updated: 2022/07/21 11:59:42 by nheo             ###   ########.fr       */
+/*   Updated: 2022/07/26 20:30:56 by nheo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ static void	swap_stack(t_stack *stack)
 	if (stack->size > 1)
 	{
 		tmp = stack->top;
-		stack->top = stack->top->prev;
+		stack->top = tmp->prev;
 		stack->top->next = NULL;
+		stack->top->prev->next = tmp;
 		tmp->next = stack->top;
 		tmp->prev = stack->top->prev;
 		stack->top->prev = tmp;

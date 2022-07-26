@@ -6,7 +6,7 @@
 /*   By: nheo <nheo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 18:59:11 by nheo              #+#    #+#             */
-/*   Updated: 2022/07/21 15:56:22 by nheo             ###   ########.fr       */
+/*   Updated: 2022/07/26 19:32:51 by nheo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,16 @@ static void	push_stack(t_stack *cur_stack, t_stack *to_stack)
 
 void	operation_pa(t_data *data)
 {
-	push_stack(data->stack_a, data->stack_b);
+	push_stack(data->stack_b, data->stack_a);
+	if (data->stack_a->top->value > data->a_max)
+		data->a_max = data->stack_a->top->value;
+	else if (data->stack_a->top->value < data->a_min)
+		data->a_min = data->stack_a->top->value;
 	write(1, "pa\n", 3);
 }
 
 void	operation_pb(t_data *data)
 {
-	push_stack(data->stack_b, data->stack_a);
+	push_stack(data->stack_a, data->stack_b);
 	write(1, "pb\n", 3);
 }

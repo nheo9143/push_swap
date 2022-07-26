@@ -6,7 +6,7 @@
 /*   By: nheo <nheo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 18:58:51 by nheo              #+#    #+#             */
-/*   Updated: 2022/07/21 16:26:11 by nheo             ###   ########.fr       */
+/*   Updated: 2022/07/26 19:49:32 by nheo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ typedef struct s_stack
 
 typedef struct s_data
 {
+	int				*arr;
+	int				piv1;
+	int				piv2;
+	int				a_min;
+	int				a_max;
+	int				min_move;
 	t_stack			*stack_a;
 	t_stack			*stack_b;
 }	t_data;
@@ -50,8 +56,10 @@ void	operation_rra(t_data *data);
 void	operation_rrb(t_data *data);
 void	operation_rrr(t_data *data);
 void	get_data(int ac, char **av, t_data *data);
-void	init_data(char *av, t_data *data);
+void	init_stack_a(char *av, t_data *data);
 void	init_node(t_stack *stack, int value);
-
+void	heap_sort(int *list, int n);
+void	greedy_algorithm(t_data *data);
+void	sort_small(t_data *data);
 
 #endif

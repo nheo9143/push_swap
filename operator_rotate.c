@@ -6,7 +6,7 @@
 /*   By: nheo <nheo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 18:59:28 by nheo              #+#    #+#             */
-/*   Updated: 2022/07/21 12:01:47 by nheo             ###   ########.fr       */
+/*   Updated: 2022/07/26 17:08:32 by nheo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	rotate_stack(t_stack *stack)
 	{
 		tmp = stack->top;
 		stack->top = tmp->prev;
+		stack->top->next = NULL;
 		tmp->next = stack->bottom;
 		tmp->prev = NULL;
 		stack->bottom->prev = tmp;

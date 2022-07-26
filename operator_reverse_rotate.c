@@ -6,7 +6,7 @@
 /*   By: nheo <nheo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 18:59:21 by nheo              #+#    #+#             */
-/*   Updated: 2022/07/21 11:59:39 by nheo             ###   ########.fr       */
+/*   Updated: 2022/07/26 17:07:32 by nheo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	reverse_rotate_stack(t_stack *stack)
 	{
 		tmp = stack->bottom;
 		stack->bottom = stack->bottom->next;
+		stack->bottom->prev = NULL;
 		tmp->next = NULL;
 		stack->top->next = tmp;
 		tmp->prev = stack->top;

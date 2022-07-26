@@ -6,7 +6,7 @@
 #    By: nheo <nheo@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/09 13:06:20 by nheo              #+#    #+#              #
-#    Updated: 2022/07/21 15:20:56 by nheo             ###   ########.fr        #
+#    Updated: 2022/07/26 14:11:16 by nheo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ SRCS = ft_isalpha.c \
 HDRS = ../includes
 
 OBJS = $(SRCS:.c=.o)
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 all : $(NAME)
 
