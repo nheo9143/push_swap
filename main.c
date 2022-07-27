@@ -6,7 +6,7 @@
 /*   By: nheo <nheo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 19:00:17 by nheo              #+#    #+#             */
-/*   Updated: 2022/07/26 21:28:37 by nheo             ###   ########.fr       */
+/*   Updated: 2022/07/27 13:08:16 by nheo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int ac, char *av[])
 		greedy_algorithm(&data);
 	else
 		sort_small(&data);
-	// print_result(data);
+	print_result(data);
 	// system(("leaks push_swap"));
 	exit(0);
 }

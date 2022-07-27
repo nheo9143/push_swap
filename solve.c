@@ -6,7 +6,7 @@
 /*   By: nheo <nheo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 14:07:23 by nheo              #+#    #+#             */
-/*   Updated: 2022/07/26 21:19:26 by nheo             ###   ########.fr       */
+/*   Updated: 2022/07/27 13:06:22 by nheo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	setup(t_data *data)
 		else if (data->stack_a->top->value < data->piv2)
 			operation_pb(data);
 		else
+			// operation_pb(data);
 			operation_ra(data);
 	}
 	while (data->stack_a->size > 3)
@@ -131,6 +132,30 @@ int	ft_abs(int num)
 	return (num);
 }
 
+int	check_min(int a, int b, int min)
+{
+	if (a * b > 0)
+	{
+		if (ft_abs(a) > ft_abs(b))
+			return (ft_abs(a) < min);
+		else
+			return (ft_abs(b) < min);
+	}
+	return (ft_abs(a) + ft_abs(b) < min);
+}
+
+int	get_min_sum(int a, int b)
+{
+	if (a * b > 0)
+	{
+		if (ft_abs(a) > ft_abs(b))
+			return (ft_abs(a));
+		else
+			return (ft_abs(b));
+	}
+	return (ft_abs(a) + ft_abs(b));
+}
+
 void	find_min_move(t_data *data, int *a_cost, int *b_cost)
 {
 	int		i;
@@ -148,9 +173,9 @@ void	find_min_move(t_data *data, int *a_cost, int *b_cost)
 		tmp_b = i;
 		if (tmp_b >= (data->stack_b->size + 1) / 2)
 			tmp_b = (data->stack_b->size - tmp_b) * -1;
-		if (ft_abs(tmp_a) + ft_abs(tmp_b) < data->min_move || data->min_move == -1)
+		if (check_min(tmp_a, tmp_b, data->min_move) || data->min_move == -1)
 		{
-			data->min_move = ft_abs(tmp_a) + ft_abs(tmp_b);
+			data->min_move = get_min_sum(tmp_a, tmp_b);
 			*a_cost = tmp_a;
 			*b_cost = tmp_b;
 		}
@@ -235,11 +260,13 @@ void	get_ra_cost(t_data *data, int *cost)
 	while (tmp)
 	{
 		if (tmp->value == data->a_max)
+		{
+			(*cost)++;
 			break;
+		}
 		tmp = tmp->prev;
 		(*cost)++;
 	}
-	(*cost)++;
 }
 
 void	get_rra_cost(t_data *data, int *cost)
@@ -254,7 +281,6 @@ void	get_rra_cost(t_data *data, int *cost)
 		tmp = tmp->next;
 		(*cost)++;
 	}
-	(*cost)++;
 }
 
 void	last_sort(t_data *data)
@@ -268,7 +294,7 @@ void	last_sort(t_data *data)
 	get_rra_cost(data, &rra_cost);
 	if (ra_cost < rra_cost)
 	{
-		while (data->stack_a->top->value > data->stack_a->bottom->value)
+		while (ra_cost)
 		{
 			operation_ra(data);
 			ra_cost--;
@@ -276,7 +302,7 @@ void	last_sort(t_data *data)
 	}
 	else
 	{
-		while (data->stack_a->top->value > data->stack_a->bottom->value)
+		while (rra_cost)
 		{
 			operation_rra(data);
 			rra_cost--;
