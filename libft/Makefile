@@ -6,11 +6,11 @@
 #    By: nheo <nheo@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/09 13:06:20 by nheo              #+#    #+#              #
-#    Updated: 2022/07/26 14:11:16 by nheo             ###   ########.fr        #
+#    Updated: 2022/07/29 14:15:16 by nheo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+NAME = libft.a
 SRCS = ft_isalpha.c \
 		ft_isdigit.c \
 		ft_isalnum.c \
@@ -18,6 +18,7 @@ SRCS = ft_isalpha.c \
 		ft_isprint.c \
 		ft_toupper.c \
 		ft_tolower.c \
+		ft_strcmp.c \
 		ft_strncmp.c \
 		ft_strlen.c \
 		ft_strlcpy.c \
@@ -45,9 +46,6 @@ SRCS = ft_isalpha.c \
 		ft_putstr_fd.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
-		ft_printf.c \
-		ft_printf_utils.c \
-		ft_based_num.c	\
 		ft_lstnew.c \
 		ft_lstadd_front.c \
 		ft_lstsize.c \
@@ -66,16 +64,16 @@ CFLAGS = -Wall -Wextra -Werror -g
 all : $(NAME)
 
 %.o : %.c
-	cc $(CFLAGS) -c -o $@ $< -I $(HDRS)
+	@cc $(CFLAGS) -c -o $@ $< -I $(HDRS)
 
 $(NAME) :$(OBJS)
-	ar rcs $(NAME) $(OBJS)
+	@ar rcs $(NAME) $(OBJS)
 
 clean :
-	rm -f $(OBJS)
+	@rm -f $(OBJS)
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re : fclean all
 

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operator_reverse_rotate.c                          :+:      :+:    :+:   */
+/*   operator_reverse_rotate_bonus.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nheo <nheo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 18:59:21 by nheo              #+#    #+#             */
-/*   Updated: 2022/07/29 14:10:20 by nheo             ###   ########.fr       */
+/*   Updated: 2022/07/29 14:10:04 by nheo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "includes/push_swap_bonus.h"
 
 static void	reverse_rotate_stack(t_stack *stack)
 {
@@ -31,18 +31,15 @@ static void	reverse_rotate_stack(t_stack *stack)
 void	operation_rra(t_data *data)
 {
 	reverse_rotate_stack(data->stack_a);
-	write(1, "rra\n", 4);
 }
 
 void	operation_rrb(t_data *data)
 {
 	reverse_rotate_stack(data->stack_b);
-	write(1, "rrb\n", 4);
 }
 
 void	operation_rrr(t_data *data)
 {
 	reverse_rotate_stack(data->stack_a);
 	reverse_rotate_stack(data->stack_b);
-	write(1, "rrr\n", 4);
 }

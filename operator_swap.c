@@ -6,11 +6,11 @@
 /*   By: nheo <nheo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 18:59:35 by nheo              #+#    #+#             */
-/*   Updated: 2022/07/26 21:28:22 by nheo             ###   ########.fr       */
+/*   Updated: 2022/07/29 14:10:24 by nheo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/push_swap.h"
+#include "includes/push_swap.h"
 
 static void	swap_stack(t_stack *stack)
 {

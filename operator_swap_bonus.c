@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operator_rotate.c                                  :+:      :+:    :+:   */
+/*   operator_swap_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nheo <nheo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 18:59:28 by nheo              #+#    #+#             */
-/*   Updated: 2022/07/29 14:10:22 by nheo             ###   ########.fr       */
+/*   Created: 2022/07/19 18:59:35 by nheo              #+#    #+#             */
+/*   Updated: 2022/07/29 14:09:58 by nheo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "includes/push_swap_bonus.h"
 
-static void	rotate_stack(t_stack *stack)
+static void	swap_stack(t_stack *stack)
 {
 	t_node	*tmp;
 
@@ -21,28 +21,28 @@ static void	rotate_stack(t_stack *stack)
 		tmp = stack->top;
 		stack->top = tmp->prev;
 		stack->top->next = NULL;
-		tmp->next = stack->bottom;
-		tmp->prev = NULL;
-		stack->bottom->prev = tmp;
-		stack->bottom = tmp;
+		if (stack->top->prev)
+			stack->top->prev->next = tmp;
+		else
+			stack->bottom = tmp;
+		tmp->next = stack->top;
+		tmp->prev = stack->top->prev;
+		stack->top->prev = tmp;
 	}
 }
 
-void	operation_ra(t_data *data)
+void	operation_sa(t_data *data)
 {
-	rotate_stack(data->stack_a);
-	write(1, "ra\n", 3);
+	swap_stack(data->stack_a);
 }
 
-void	operation_rb(t_data *data)
+void	operation_sb(t_data *data)
 {
-	rotate_stack(data->stack_b);
-	write(1, "rb\n", 3);
+	swap_stack(data->stack_b);
 }
 
-void	operation_rr(t_data *data)
+void	operation_ss(t_data *data)
 {
-	rotate_stack(data->stack_a);
-	rotate_stack(data->stack_b);
-	write(1, "rr\n", 3);
+	swap_stack(data->stack_a);
+	swap_stack(data->stack_b);
 }

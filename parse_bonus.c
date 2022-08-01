@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   parse_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nheo <nheo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 14:07:29 by nheo              #+#    #+#             */
-/*   Updated: 2022/07/29 14:13:21 by nheo             ###   ########.fr       */
+/*   Updated: 2022/07/29 14:11:16 by nheo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
-#include "includes/push_swap.h"
+#include "includes/push_swap_bonus.h"
 
 void	init_node(t_stack *stack, int value)
 {
@@ -36,7 +36,7 @@ void	init_node(t_stack *stack, int value)
 	}
 }
 
-void	get_pivot(t_data *data)
+void	get_sorted(t_data *data)
 {
 	int		i;
 	t_node	*tmp;
@@ -51,20 +51,16 @@ void	get_pivot(t_data *data)
 		data->arr[i] = tmp->value;
 		tmp = tmp->prev;
 	}
-	check_sorted(data->arr, data->stack_a->size);
+	check_sorted(data, data->arr, data->stack_a->size);
 	quick_sort(data->arr, 0, data->stack_a->size);
-	data->piv1 = data->arr[data->stack_a->size / 3];
-	data->piv2 = data->arr[data->stack_a->size / 3 * 2];
 }
 
 void	check_dup(t_stack *stack, int val)
 {
-	int		i;
 	t_node	*tmp;
 
-	i = -1;
 	tmp = stack->top;
-	while (++i < stack->size)
+	while (tmp)
 	{
 		if (val == tmp->value)
 			ft_error();
@@ -74,15 +70,15 @@ void	check_dup(t_stack *stack, int val)
 
 void	init_stack_a(char *av, t_data *data)
 {
-	int		i;
 	int		val;
+	int		i;
 	char	**nums;
 
-	i = -1;
 	nums = ft_split(av, " \t\v\r\f\n");
+	i = -1;
 	while (nums[++i])
 	{
-		val = ft_atoi((const char *)nums[i]);
+		val = ft_atoi(nums[i]);
 		check_dup(data->stack_a, val);
 		init_node(data->stack_a, val);
 		data->stack_a->size++;
@@ -105,5 +101,5 @@ void	get_data(int ac, char **av, t_data *data)
 	data->stack_b->size = 0;
 	data->stack_b->top = NULL;
 	data->stack_b->bottom = NULL;
-	get_pivot(data);
+	get_sorted(data);
 }

@@ -6,7 +6,7 @@
 /*   By: nheo <nheo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 10:14:50 by nheo              #+#    #+#             */
-/*   Updated: 2022/07/26 14:07:53 by nheo             ###   ########.fr       */
+/*   Updated: 2022/07/29 13:25:42 by nheo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,6 @@ char	**ft_split(char const *s, char *c)
 		ft_strlcpy(ptrs[i++], s, ft_count_chars(s, c) + 1);
 		s = ft_next_strs(s, c, 1);
 	}
+	ptrs[i] = NULL;
 	return (ptrs);
 }

@@ -6,24 +6,11 @@
 /*   By: nheo <nheo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 19:00:17 by nheo              #+#    #+#             */
-/*   Updated: 2022/07/27 13:08:16 by nheo             ###   ########.fr       */
+/*   Updated: 2022/07/29 14:10:33 by nheo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/push_swap.h"
-#include "./includes/ft_printf.h"
-#include "includes/libft.h"
-#include <stdlib.h>
-
-void	print_result(t_data data)
-{
-	while (data.stack_a->size > 0)
-	{
-		ft_printf("%d\n", data.stack_a->top->value);
-		data.stack_a->top = data.stack_a->top->prev;
-		data.stack_a->size--;
-	}
-}
+#include "includes/push_swap.h"
 
 int	main(int ac, char *av[])
 {
@@ -36,7 +23,5 @@ int	main(int ac, char *av[])
 		greedy_algorithm(&data);
 	else
 		sort_small(&data);
-	print_result(data);
-	// system(("leaks push_swap"));
 	exit(0);
 }

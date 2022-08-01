@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operator_rotate.c                                  :+:      :+:    :+:   */
+/*   operator_rotate_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nheo <nheo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 18:59:28 by nheo              #+#    #+#             */
-/*   Updated: 2022/07/29 14:10:22 by nheo             ###   ########.fr       */
+/*   Updated: 2022/07/29 14:10:01 by nheo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "includes/push_swap_bonus.h"
 
 static void	rotate_stack(t_stack *stack)
 {
@@ -31,18 +31,15 @@ static void	rotate_stack(t_stack *stack)
 void	operation_ra(t_data *data)
 {
 	rotate_stack(data->stack_a);
-	write(1, "ra\n", 3);
 }
 
 void	operation_rb(t_data *data)
 {
 	rotate_stack(data->stack_b);
-	write(1, "rb\n", 3);
 }
 
 void	operation_rr(t_data *data)
 {
 	rotate_stack(data->stack_a);
 	rotate_stack(data->stack_b);
-	write(1, "rr\n", 3);
 }

@@ -6,7 +6,7 @@
 /*   By: nheo <nheo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 18:59:01 by nheo              #+#    #+#             */
-/*   Updated: 2022/07/21 16:10:59 by nheo             ###   ########.fr       */
+/*   Updated: 2022/07/27 19:48:20 by nheo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static int	ft_isdigit(char c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);
+	ft_error();
 	return (0);
 }
 
@@ -51,7 +52,7 @@ static const char	*check_format(const char *str, int *minus)
 			*minus *= (-1);
 		str++;
 	}
-	if (!*str)
+	if (!ft_isdigit(*str))
 		ft_error();
 	return (str);
 }
@@ -65,7 +66,7 @@ int	ft_atoi(const char *str)
 	num = 0;
 	minus = 1;
 	str = check_format(str, &minus);
-	while (ft_isdigit(*str) && *str)
+	while (*str && ft_isdigit(*str))
 	{
 		if (ft_check_flow(num, *str, minus))
 			return (ft_check_flow(num, *str, minus) - 2);
